@@ -1,18 +1,19 @@
-version: '3.8'
+version: '3.8' #dosya versiyonu
 
 services:
   db:
-    image: postgres:17
-    container_name: url_shortener_db
-    restart: always
+    image: postgres:17 #postgresql sürümü
+    container_name: url_shortener_db 
+    restart: always #container kapanırsa otomatik olarak yeniden başla
     environment:
-      POSTGRES_USER: deneme
-      POSTGRES_PASSWORD: 11281117
-      POSTGRES_DB: urlshortenerdb
+      POSTGRES_USER: deneme #db kullanıcı adı
+      POSTGRES_PASSWORD: 11281117 #db şifresi
+      POSTGRES_DB: urlshortenerdb #oluşturulacak veritabanı adı
     ports:
-      - "5432:5432"
+      - "5432:5432" #host container port eşlemesi
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data #kalıcı veri alanı
 
 volumes:
-  pgdata:
+  pgdata: #docker volume ismi (veriler burada tutulur)
+# docker exec -it url_shortener_db psql -U deneme -d urlshortenerdb 
